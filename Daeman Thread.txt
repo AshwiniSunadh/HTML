@@ -1,0 +1,87 @@
+class Captain extends Thread
+{
+	@Override
+	public void run()
+	{
+		try
+		{
+			BattingCoach bc=new BattingCoach();
+			BowlingCoach blc=new BowlingCoach();
+			bc.setName("bat");
+			blc.setName("bow");
+			bc.setDaemon(true);
+			blc.setDaemon(true);
+			bc.start();
+			blc.start();
+			System.out.println("captain will enter the feild");
+			Thread.sleep(3000);
+			System.out.println("captain will warm-up");
+			Thread.sleep(3000);
+			System.out.println("captain will do caching practice");
+			Thread.sleep(3000);
+			System.out.println("captain will do botting practice");
+			Thread.sleep(3000);
+			System.out.println("captain will go to hotel");
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("problem");
+		}
+	}
+}
+
+class BattingCoach  extends Thread
+{
+	@Override
+	public void run()
+	{
+		for(;;)
+		{
+			System.out.println("battingcoach is in the feild");
+			try
+			{
+				
+				Thread.sleep(3000);
+				
+			}
+			catch(Exception e)
+			{
+				System.out.println("problem");
+			}
+		}
+	}
+
+}	
+class BowlingCoach extends Thread
+	{
+		@Override
+		public void run()
+		{
+			for(;;)
+			{
+
+				System.out.println("bowlingcoach is in  the feild");
+				try
+				{
+					Thread.sleep(3000);
+					
+				}
+				catch(Exception e)
+				{
+					System.out.println("problem");
+				}
+			}
+		}
+	}
+
+public class Programm {
+
+	public static void main(String[] args)
+	{	
+	Captain c=new Captain();
+	c.setName("cap");
+	c.start();
+	}
+
+}
