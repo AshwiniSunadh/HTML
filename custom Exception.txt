@@ -1,0 +1,98 @@
+package ashwini;
+
+import java.util.Scanner;
+
+import javax.xml.bind.ValidationEvent;
+
+class invalid1 extends Exception
+{
+	@Override
+	public String getMessage() {
+		return "you are too old";
+	}
+	
+}
+
+class invalid2 extends Exception
+{
+	@Override
+	public String getMessage() {
+		return "you are too young";
+	}
+	
+}
+
+class Driving
+{
+	int young=18;
+	int old=60;
+	int a;
+	public void input()
+	{
+		Scanner scan=new Scanner(System.in);
+		System.out.println("enter the age");
+		a=scan.nextInt();
+	}
+	public void validation()  throws invalid1,invalid2
+	{
+		if(a>=young && a<=old)
+		{
+			System.out.println();
+		}
+		else if(a<young)
+		{
+			invalid1 i1=new invalid1();
+			System.out.println(i1.getMessage());
+			throw i1;
+		}
+		else
+		{
+			invalid2 i2=new invalid2();
+			System.out.println(i2.getMessage());
+			throw i2;
+		}
+	}
+}
+class Government
+{
+	void start()
+	{
+		Driving d=new Driving();
+		try
+		{
+			d.input();
+			d.validation();
+		}
+		catch(Exception e)
+		{
+			try
+			{
+				d.input();
+				d.validation();
+				
+			}
+			catch(Exception f)
+			{
+				try
+				{
+					d.input();
+					d.validation();
+				}
+				catch(Exception g)
+				{
+					System.out.println("you are not eligible to vote");
+				}
+
+			}
+		}
+	}
+}
+public class Github1 {
+
+	public static void main(String[] args) {
+		Government g=new Government();
+		g.start();
+
+	}
+
+}
