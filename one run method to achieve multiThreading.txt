@@ -1,0 +1,65 @@
+package ashwini;
+
+class Good extends Thread
+{
+	@Override
+	public void run() {
+		Thread t1=Thread.currentThread();
+		String name=t1.getName();
+		if(name.equals("print"))
+		{
+			print();
+		}
+		else
+		{
+			character();
+		}
+		
+	}
+	
+	public void print() 
+	{
+		System.out.println("print the number");
+		for(int i=1;i<5;i++)
+		{
+			try
+			{
+				System.out.println(i);
+				Thread.sleep(1000);
+			}
+			catch(Exception e)
+			{
+				System.out.println("Problem");
+			}
+		}
+	}
+	
+	public void character()
+	{
+		System.out.println("print the caharacter");
+		for(int i=65;i<=70;i++)
+		{
+			try
+			{
+				System.out.println((char)i);
+				Thread.sleep(1000);
+			}
+			catch(Exception e)
+			{
+				System.out.println("problem");
+			}
+		}
+	}
+}
+public class Github2 {
+
+	public static void main(String[] args) {
+		Good d1=new Good();
+		Good d2=new Good();
+		d1.setName("print");
+		d2.setName("character");
+		d1.start();
+		d2.start();
+	}
+
+}
